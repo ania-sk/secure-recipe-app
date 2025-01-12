@@ -29,7 +29,20 @@
     </form>
 
     <?php
-    include "pages/{$_GET['page']}.php";
+    $pages = [
+        'citrus_salmon',
+        'mediterranian_pasta',
+        'sunset_risotto',
+        'tropical_tacos'
+    ];
+
+    if (!empty($_GET['page'])) {
+        $page = $_GET['page'];
+        if (in_array($page, $pages)) {
+            echo file_get_contents("pages/{$page}.html");
+        }
+    }
+
     ?>
 
 </body>
